@@ -68,11 +68,11 @@ export default function Home() {
           {/* TECNOLOGIAS */}
           <div className="flex gap-8 flex-wrap justify-center mt-10">
             {[
-              { name: "React", icon: "/react.svg" },
-              { name: "JavaScript", icon: "/javascript.svg" },
-              { name: "HTML", icon: "/html.svg" },
-              { name: "CSS", icon: "/css.svg" },
-              { name: "Node.js", icon: "/node.js.svg" },
+              { name: "React", icon: "public/React.svg" },
+              { name: "JavaScript", icon: "/JavaScript.svg" },
+              { name: "HTML", icon: "/HTML.svg" },
+              { name: "CSS", icon: "/CSS.svg" },
+              { name: "Node.js", icon: "/Node.js.svg" },
             ].map((tech) => (
               <div
                 key={tech.name}
