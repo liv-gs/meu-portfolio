@@ -1,65 +1,249 @@
 import Image from "next/image";
+import { Oxanium, Rubik } from "next/font/google";
+
+const oxanium = Oxanium({
+  subsets: ["latin"],
+  weight: ["400", "600"],
+});
+
+const rubik = Rubik({
+  subsets: ["latin"],
+  weight: ["500", "700"],
+});
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+    <div
+      className={`${oxanium.className} bg-[#0f1117] text-white scroll-smooth overflow-x-hidden`}
+    >
+      {/* HERO */}
+      <section
+        className="
+        relative
+        min-h-screen
+        flex
+        flex-col
+        items-center
+        justify-center
+        text-center
+        px-6
+        bg-[url('/intro.svg')]
+        bg-no-repeat
+        bg-center
+        bg-cover
+      "
+      >
+        {/* Overlay mais suave */}
+        <div className="absolute inset-0 bg-black/30" />
+
+        <div className="relative z-10 max-w-3xl">
+          <div className="w-28 h-28 rounded-full overflow-hidden border-4 border-pink-500 mb-6 mx-auto shadow-lg">
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+              src="/foto.jpg"
+              alt="Foto de perfil"
+              width={112}
+              height={112}
+              priority
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+          </div>
+
+          <p className="text-zinc-300 mb-3 tracking-widest uppercase text-sm">
+            Hello World! Meu nome é{" "}
+            <span className="text-pink-400 font-semibold">
+              Lívia Gonçalves
+            </span>
+          </p>
+
+          <h1
+            className={`${rubik.className} text-4xl md:text-6xl font-bold mb-6`}
           >
-            Documentation
-          </a>
+            Desenvolvedora Front-end
+          </h1>
+
+          <p className="max-w-2xl text-zinc-400 mb-12 mx-auto">
+            Desenvolvo aplicações modernas com React, Next.js e React Native.
+            Foco em performance, boas práticas e interfaces bem estruturadas.
+          </p>
+
+          {/* TECNOLOGIAS */}
+          <div className="flex gap-8 flex-wrap justify-center mt-10">
+            {[
+              { name: "React", icon: "/react.svg" },
+              { name: "JavaScript", icon: "/javascript.svg" },
+              { name: "HTML", icon: "/html.svg" },
+              { name: "CSS", icon: "/css.svg" },
+              { name: "Node.js", icon: "/node.js.svg" },
+            ].map((tech) => (
+              <div
+                key={tech.name}
+                className="flex items-center gap-2 bg-zinc-800 px-4 py-2 rounded-full hover:bg-zinc-700 transition"
+              >
+                <Image
+                  src={tech.icon}
+                  alt=""
+                  width={18}
+                  height={18}
+                  aria-hidden
+                />
+                <span className="text-sm">{tech.name}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-20 animate-bounce text-zinc-400 text-2xl">
+            ↓
+          </div>
         </div>
-      </main>
+      </section>
+
+      {/* PROJETOS */}
+      <section className="py-24 bg-[#0d1117] px-6">
+        <h2 className="text-center text-sm text-pink-400 mb-2 uppercase tracking-widest">
+          Projetos
+        </h2>
+
+        <h3
+          className={`${rubik.className} text-center text-3xl font-bold mb-16`}
+        >
+          Alguns trabalhos recentes
+        </h3>
+
+        <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+          {[
+            {
+              title: "Dashboard Admin",
+              desc: "Painel administrativo com autenticação e gráficos.",
+            },
+            {
+              title: "Landing Page SaaS",
+              desc: "Página moderna com foco em conversão.",
+            },
+            {
+              title: "App Mobile",
+              desc: "Aplicação desenvolvida com React Native.",
+            },
+          ].map((project) => (
+            <div
+              key={project.title}
+              className="bg-[#161b22] p-8 rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-1 transition"
+            >
+              <h4
+                className={`${rubik.className} text-lg font-semibold mb-3`}
+              >
+                {project.title}
+              </h4>
+              <p className="text-zinc-400 text-sm">
+                {project.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* SERVIÇOS */}
+      <section className="py-24 bg-[#0f1117] px-6">
+        <h2 className="text-center text-sm text-pink-400 mb-2 uppercase tracking-widest">
+          Meus serviços
+        </h2>
+
+        <h3
+          className={`${rubik.className} text-center text-3xl font-bold mb-16`}
+        >
+          Como posso ajudar
+        </h3>
+
+        <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-8">
+          {[
+            {
+              title: "Websites",
+              desc: "Interfaces modernas e responsivas.",
+            },
+            {
+              title: "APIs",
+              desc: "Integrações e consumo de serviços.",
+            },
+            {
+              title: "Mobile",
+              desc: "Aplicações com React Native.",
+            },
+          ].map((service) => (
+            <div
+              key={service.title}
+              className="bg-[#161b22] p-8 rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-1 transition text-center"
+            >
+              <h4
+                className={`${rubik.className} font-semibold mb-3`}
+              >
+                {service.title}
+              </h4>
+              <p className="text-zinc-400 text-sm">
+                {service.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* CONTATO */}
+      <section
+        className="
+          relative
+          min-h-screen
+          flex
+          flex-col
+          items-center
+          justify-center
+          text-center
+          px-6
+          bg-[url('/intro.svg')]
+          bg-no-repeat
+          bg-center
+          bg-cover
+        "
+      >
+        <div className="absolute inset-0 bg-black/40" />
+
+        <div className="relative z-10">
+          <h2 className="text-sm text-pink-400 mb-2 uppercase tracking-widest">
+            Contato
+          </h2>
+
+          <h3
+            className={`${rubik.className} text-3xl font-bold mb-5`}
+          >
+            Gostou do meu trabalho?
+          </h3>
+
+          <p className="max-w-2xl text-zinc-400 mb-8 mx-auto">
+            Entre em contato ou me acompanhe nas redes sociais
+          </p>
+
+          <div className="max-w-md mx-auto space-y-4">
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              className="block bg-[#161b22] p-4 rounded-xl hover:bg-zinc-800 transition"
+            >
+              LinkedIn
+            </a>
+
+            <a
+              href="https://github.com"
+              target="_blank"
+              className="block bg-[#161b22] p-4 rounded-xl hover:bg-zinc-800 transition"
+            >
+              GitHub
+            </a>
+
+            <a
+              href="mailto:seuemail@email.com"
+              className="block bg-[#161b22] p-4 rounded-xl hover:bg-zinc-800 transition"
+            >
+              E-mail
+            </a>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
